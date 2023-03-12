@@ -20,11 +20,14 @@ insert into GHC_faculty(faculty_id,faculty_first_name,faculty_last_name,date_hir
     values(1001,'Danny','Faulkner','1-Jan-22',NULL,1,100);
 
 rem
-insert into GHC_expertise(faculty_id,course_code) values(1001,'');
-insert into GHC_expertise(faculty_id,course_code) values(1294,'APHY202');
-insert into GHC_expertise(faculty_id,course_code) values(1294,'APHY203');
+insert into GHC_expertise(faculty_id,course_code) values(1001,'APHY202');
+insert into GHC_expertise(faculty_id,course_code) values(1001,'APHY203');
+insert into GHC_expertise(faculty_id,course_code) values(1001,'APHY204');
 
---verify the interstion worked
+-
+
+
+--verify the intersation worked
 select * from GHC_department;
 select * from GHC_faculty;
 select * from GHC_course;
