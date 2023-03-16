@@ -33,7 +33,7 @@ CREATE TABLE GHC_faculty(
     date_hire DATE,
     date_fired DATE,
     is_active NUMBER,
-    department_number VARCHAR2(100),
+    department_number NUMBER,
     CONSTRAINT SYS_F_PK PRIMARY KEY(faculty_id)
     );
 -- WHEN MAKE foreign key diff syntax than column level
@@ -51,4 +51,3 @@ CREATE TABLE GHC_expertise(
 );
 
 spool off
-C:\cprg250s\Lab_GHC_Manipulatin\build_ManiDataLab.sql
