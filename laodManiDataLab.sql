@@ -1,7 +1,8 @@
-set echo on 
+SET ECHO ON 
+SET FEEDBACK ON
 spool c:\cprg250s\LoadGHCOutput.txt
 rem
--- Delete exiting data , child  followed by parent
+-- Delete exiting data IN tables
 Delete GHC_expertise;
 delete GHC_faculty;
 delete GHC_course;
@@ -24,8 +25,8 @@ insert into GHC_expertise(faculty_id,course_code) values(1001,'APHY202');
 insert into GHC_expertise(faculty_id,course_code) values(1001,'APHY203');
 insert into GHC_expertise(faculty_id,course_code) values(1001,'APHY204');
 
--
---- update record question 4
+
+--- update record question 3,4,5
 insert into GHC_course(course_code,course_title,course_credit) values('APHY302','Nebula',5);
 --remove 1001 to avoid reference key conflict first
 DELETE GHC_expertise
@@ -33,10 +34,7 @@ WHERE faculty_id=1001;
 -- delete the record from course table 
 DELETE GHC_course
 WHERE course_code IN ('APHY203','APHY202','APHY204');
-
-
-
-
+rem
 --verify 
 select * from GHC_department;
 select * from GHC_faculty;
