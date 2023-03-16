@@ -10,13 +10,13 @@ rem create table without  any constraints
 CREATE TABLE GHC_department(
     department_number NUMBER,
     department_name VARCHAR2(100));
---ALTER TABLE TO ADD CONST
+
 
 ALTER TABLE GHC_department
     ADD CONSTRAINT SYS_D_PK PRIMARY KEY(department_number)
     ADD CONSTRAINT SYS_DEPN_UK UNIQUE(department_name)
     MODIFY department_name CONSTRAINT SYS_DPN_NN NOT NULL;
---TABLE LEVEL CONST
+
 CREATE TABLE GHC_course(
     course_code CHAR(7),
     course_title VARCHAR2(100),
@@ -36,14 +36,12 @@ CREATE TABLE GHC_faculty(
     department_number NUMBER,
     CONSTRAINT SYS_F_PK PRIMARY KEY(faculty_id)
     );
--- WHEN MAKE foreign key diff syntax than column level
 ALTER TABLE GHC_faculty
     ADD CONSTRAINT SYS_FAC_FK FOREIGN KEY(department_number) REFERENCES GHC_department(department_number)
     MODIFY faculty_first_name CONSTRAINT SYS_FFN_NN NOT NULL
     MODIFY faculty_last_name CONSTRAINT SYS_FLN_NN NOT NULL
     ADD CONSTRAINT SYS_FA_CK CHECK(is_active IN(0,1))
     MODIFY date_hire CONSTRAINT SYS_HRD_NN NOT NULL;
---add conposit primary key in bridiging table 
 CREATE TABLE GHC_expertise(
     faculty_id NUMBER CONSTRAINT SYS_EX_FK REFERENCES GHC_faculty(faculty_id),
     course_code CHAR(7) CONSTRAINT SYS_EXC_FK REFERENCES GHC_course(course_code),
